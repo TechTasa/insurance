@@ -5,14 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rupee Xpert</title>
+    <!-- <meta name="apple-touch-fullscreen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
+    <title>Insurance</title>
+    <!-- <script type="module" src="/pwa-install.bundle.js"></script> -->
     <link rel="stylesheet" href="../css/style.css">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
+    <!-- <script type="text/javascript">
+		if ("serviceWorker" in navigator) {
+			if (navigator.serviceWorker.controller) {
+				console.log("Active service worker found, no need to register");
+			} else {
+				navigator.serviceWorker.register('service-worker.js', { scope: '/' }).then(function (reg) {
+					console.log("Service worker registered");
+				});
+			}
+		}
+	</script> -->
     <div class="cals"> <button class="close">
             <i class="fa-solid fa-xmark"></i>
         </button><embed src="../html/calculator.html" class="embed" width="300" height="500px" /></div>
@@ -27,33 +44,136 @@
                 <line x1="4" y1="18" x2="20" y2="18" />
             </svg></div>
         <a href="/" class="logo"><img src="../images/XpertRupees_Logo.svg" alt=""></a>
-            <ul class="links">
-                <li class=" link active"><a href="/">Home</a></li>
-                <li class=" link"><a href="/services">Services</a></li>
-                <li class=" link"><a href="/career">Career</a></li>
-                <li class=" link "><a href="/blog">Blog</a></li>
-                <li class=" link"><a href="/contact">Contact</a></li>
-            </ul>
-            
-            <% if (loggedin) { %>
-                <button class="cta" onClick='location="/dashboard"'>Dashboard</button>
+
+
+        <ul class="links">
+            <li class=" link active"><a href="/">Home</a></li>
+            <li class=" link"><a href="/services">Services</a></li>
+            <li class=" link"><a href="/career">Career</a></li>
+            <li class=" link "><a href="/blog">Blog</a></li>
+            <li class=" link"><a href="/contact">Contact</a></li>
+        </ul>
+
+        <% if (loggedin) { %>
+            <button class="cta" onClick='location="/dashboard"'>Dashboard</button>
             <% } else { %>
                 <button class="cta" onClick='location="/auth/login"'>Sign In</button>
-            <% } %>
-            
-           
+                <% } %>
+
+
     </nav>
-    <section class="focus">
-        <div class="banner-container">
-            <div class="banner-wrapper">
-                <img style="width: 100%;" src="../images/XpertRupeesNewBanner.png" alt="">
-                <img style="width: 100%;" src="../images/XpertRupeesNewBanner2.png" alt="">
-                <img style="width: 100%;" src="../images/XpertRupeesNewBanner3.png" alt="">
-                <img style="width: 100%;" src="../images/XpertRupeesNewBanner4.png" alt="">
-                <img style="width: 100%;" src="../images/XpertRupeesNewBanner5.png" alt="">
-            </div>
+
+
+    <style>
+        .slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .slider-container {
+            width: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .slider-btn.prev {
+            left: 10px;
+        }
+
+        .slider-btn.next {
+            right: 10px;
+        }
+    </style>
+    <section class="slider">
+        <div class="slider-container">
+            <img src="/images/XpertRupeesNewBanner.png" alt="Slide 1" class="slide active">
+            <img src="/images/XpertRupeesNewBanner2.png" alt="Slide 2" class="slide">
+            <img src="/images/XpertRupeesNewBanner3.png" alt="Slide 3" class="slide">
+            <img src="/images/XpertRupeesNewBanner4.png" alt="Slide 4" class="slide">
+            <img src="/images/XpertRupeesNewBanner5.png" alt="Slide 5" class="slide">
         </div>
+        <button class="slider-btn prev">&lt;</button>
+        <button class="slider-btn next">&gt;</button>
     </section>
+
+
+    <!-- <section class="wrapper">
+        <h1 class="wrapper-title">
+            CARDS & LOANS
+        </h1>
+        <div class="cards-grid">
+            <a href="loan/apply/creditcard" class="wrapper-card" id="creditcard">
+                <span>
+                    <h1 class="card-title">CREDIT CARD</h1>
+                    <img src="../images/debit-card.png" alt="">
+                </span>
+                <p class="card-discription">From 35+ options, choose a card matching your lifestyle & needs</p>
+                <p class="card-cta">Get Best Offers &rArr;</p>
+            </a>
+
+            <a href="loan/apply/personalloan" class="wrapper-card" id="personalloan" ;>
+                <span>
+                    <h1 class="card-title">PERSONAL LOAN</h1>
+                    <img src="../images/loan.png" alt="">
+                </span>
+                <p class="card-discription">Select the best offer curated just for you from a wide choice of Banks &
+                    NBFC's</p>
+                <p class="card-cta">Check Eligibility &rArr;</p>
+            </a>
+            <a href="loan/apply/microloan" class="wrapper-card" id="microloan">
+                <span>
+                    <h1 class="card-title">MICRO LOANS (Under ₹50K)</h1>
+                    <img src="../images/micro-loan.png" alt="">
+                </span>
+                <p class="card-discription">Instant small ticket loans to meet your immediate cash needs</p>
+                <p class="card-cta">Get Instant Loan &rArr;</p>
+            </a>
+            <a href="loan/apply/businessloan" class="wrapper-card" id="businessloan">
+                <span>
+                    <h1 class="card-title">BUSINESS LOAN</h1>
+                    <img src="../images/Home-loan.png" alt="">
+                </span>
+                <p class="card-discription">Expand your business with loans at low interest rates</p>
+                <p class="card-cta">Check Eligibility &rArr;</p>
+            </a>
+            <a href="loan/apply/homeloan" class="wrapper-card" id="homeloan">
+                <span>
+                    <h1 class="card-title">NEW HOME LOAN</h1>
+                    <img src="../images/home-loans.png" alt="">
+                </span>
+                <p class="card-discription">Choose from lowest interest ratess available for your dream home</p>
+                <p class="card-cta">Check Eligibility &rArr; </p>
+            </a>
+        </div>
+    </section> -->
     <section class="wrapper">
         <h1 class="wrapper-title">
             INSURANCE & INVESTMENT
@@ -100,7 +220,7 @@
         <h1 class="pamplets-title">
             KEEPING YOU FINANCIALLY HEALTHY AND SAFE, ALWAYS
         </h1>
-        <div class="pamplets-flex" >
+        <div class="pamplets-flex">
             <div class="pamplets-card" id="wins">
                 <img src="../images/trophy.png" alt="">
                 <h1>Wins most innovation leading platform by India ICICI and HDFC </h1>
@@ -114,11 +234,10 @@
                 <h1>Beware from Fraudsters </h1>
             </div>
         </div>
-
     </section>
     <section class="info">
         <div class="info-left">
-            <h1>______ <br> Compare, Choose and Apply for personal credit products on RupeeXpert</h1>
+            <h1>Compare, Choose and Apply for personal credit products on Insurance Tool</h1>
         </div>
         <div class="info-right">
             <div class="info-right-card">
@@ -167,49 +286,102 @@
         </div>
     </section>
     <section class="loansolution">
-        <h1 class="loansolution-title">
-            __________<br>Loan Solutions For Different Needs</h1>
+        <h1 class="loansolution-title">Loan Solutions For Different Needs</h1>
         <div class="loansolution-list">
             <div class="loansolution-img" id="student"><img src="../images/student.jpg"></div>
-            <div class="loansolution-img" id="client"><img src="../images/client.webp"></div>
+            <div class="loansolution-img" id="client"><img src="../images/client2.jpg"></div>
             <div class="loansolution-img" id="fam"><img src="../images/fam.jpg"></div>
             <div class="loansolution-img" id="grandp"><img src="../images/grandp.jpg"></div>
             <div class="loansolution-img" id="senior"><img src="../images/senior.jpg"></div>
         </div>
     </section>
-   
+
     <section class="partners">
         <h1 class="partners-title">
             __________ <br> OUR CLIENTS FROM ACROSS THE INDUSTRY
         </h1>
         <div class="partners-list">
-           <a href="https://www.adityabirla.com/" > <div class="partner-img"><img src="../images/Partner-Icons/Aditya Birla.png" alt=""></div></a>
-            <a href="https://www.axisbank.com/" ><div class="partner-img"><img src="../images/Partner-Icons/Axis Bank.png" alt=""></div></a>
-            <a href="https://www.bajajfinserv.in/" ><div class="partner-img"><img src="../images/Partner-Icons/bajaj finserv.png" alt=""></div></a>
-            <a href="https://www.bankofbaroda.in/" ><div class="partner-img"><img src="../images/Partner-Icons/bank of baroda.png" alt=""></div></a>
-            <a href="https://www.online.citibank.co.in/" ><div class="partner-img"><img src="../images/Partner-Icons/citibank.png" alt=""></div></a>
-            <a href="https://www.experian.in/" ><div class="partner-img"><img src="../images/Partner-Icons/experian.png" alt=""></div></a>
-            <a href="https://www.federalbank.co.in/" ><div class="partner-img"><img src="../images/Partner-Icons/federal.png" alt=""></div></a>
-            <a href="https://www.fullertonindia.com/" ><div class="partner-img"><img src="../images/Partner-Icons/fullerton india.png" alt=""></div></a>
-            <a href="https://www.hdfcbank.com/" ><div class="partner-img"><img src="../images/Partner-Icons/hdfc bank.png" alt=""></div></a>
-            <a href="https://www.hdbfs.com/" ><div class="partner-img"><img src="../images/Partner-Icons/hdfc fs.png" alt=""></div></a>
-            <a href="https://www.hdfc.com/" ><div class="partner-img"><img src="../images/Partner-Icons/hdfc.png" alt=""></div></a>
-            <a href="https://www.herohousingfinance.com/" ><div class="partner-img"><img src="../images/Partner-Icons/hero housing.png" alt=""></div></a>
-            <a href="https://homefirstindia.com/" ><div class="partner-img"><img src="../images/Partner-Icons/home first.png" alt=""></div></a>
-            <a href="https://www.homecredit.net/" ><div class="partner-img"><img src="../images/Partner-Icons/homecredit.png" alt=""></div></a>
-            <a href="https://www.icicibank.com/" ><div class="partner-img"><img src="../images/Partner-Icons/icici.png" alt=""></div></a>
-            <a href="https://www.idfcfirstbank.com/" ><div class="partner-img"><img src="../images/Partner-Icons/idfc.png" alt=""></div></a>
-            <a href="https://www.indiabullshomeloans.com/" ><div class="partner-img"><img src="../images/Partner-Icons/india bulls.png" alt=""></div></a>
-            <a href="https://www.indusind.com/in/en/personal.html" ><div class="partner-img"><img src="../images/Partner-Icons/induslnd bank.png" alt=""></div></a>
-            <a href="https://www.kotak.com/en/home.html" ><div class="partner-img"><img src="../images/Partner-Icons/kotak.png" alt=""></div></a>
-            <a href="https://rattanindia.com/" ><div class="partner-img"><img src="../images/Partner-Icons/Rattanindia.png" alt=""></div></a>
-            <a href="https://www.rblbank.com/" ><div class="partner-img"><img src="../images/Partner-Icons/Rbl Bank.png" alt=""></div></a>
-            <a href="https://www.sbicard.com/" ><div class="partner-img"><img src="../images/Partner-Icons/Sbi Card.png" alt=""></div></a>
-            <a href="https://www.onlinesbi.sbi/" ><div class="partner-img"><img src="../images/Partner-Icons/Sbi.png" alt=""></div></a>
-            <a href="https://www.sc.com/in/" ><div class="partner-img"><img src="../images/Partner-Icons/Standard Chartered.png" alt=""></div></a>
-            <a href="https://retailonline.tatacapital.com/" ><div class="partner-img"><img src="../images/Partner-Icons/Tata Capital.png" alt=""></div></a>
-            <a href="https://www.unionbankofindia.co.in/english/home.aspx" ><div class="partner-img"><img src="../images/Partner-Icons/Union bank.png" alt=""></div></a>
-            <a href="https://www.yesbank.in/" ><div class="partner-img"><img src="../images/Partner-Icons/Yes Bank.png" alt=""></div></a>
+            <a href="https://www.adityabirla.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/Aditya Birla.png" alt=""></div>
+            </a>
+            <a href="https://www.axisbank.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/Axis Bank.png" alt=""></div>
+            </a>
+            <a href="https://www.bajajfinserv.in/">
+                <div class="partner-img"><img src="../images/Partner-Icons/bajaj finserv.png" alt=""></div>
+            </a>
+            <a href="https://www.bankofbaroda.in/">
+                <div class="partner-img"><img src="../images/Partner-Icons/bank of baroda.png" alt=""></div>
+            </a>
+            <a href="https://www.online.citibank.co.in/">
+                <div class="partner-img"><img src="../images/Partner-Icons/citibank.png" alt=""></div>
+            </a>
+            <a href="https://www.experian.in/">
+                <div class="partner-img"><img src="../images/Partner-Icons/experian.png" alt=""></div>
+            </a>
+            <a href="https://www.federalbank.co.in/">
+                <div class="partner-img"><img src="../images/Partner-Icons/federal.png" alt=""></div>
+            </a>
+            <a href="https://www.fullertonindia.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/fullerton india.png" alt=""></div>
+            </a>
+            <a href="https://www.hdfcbank.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/hdfc bank.png" alt=""></div>
+            </a>
+            <a href="https://www.hdbfs.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/hdfc fs.png" alt=""></div>
+            </a>
+            <a href="https://www.hdfc.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/hdfc.png" alt=""></div>
+            </a>
+            <a href="https://www.herohousingfinance.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/hero housing.png" alt=""></div>
+            </a>
+            <a href="https://homefirstindia.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/home first.png" alt=""></div>
+            </a>
+            <a href="https://www.homecredit.net/">
+                <div class="partner-img"><img src="../images/Partner-Icons/homecredit.png" alt=""></div>
+            </a>
+            <a href="https://www.icicibank.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/icici.png" alt=""></div>
+            </a>
+            <a href="https://www.idfcfirstbank.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/idfc.png" alt=""></div>
+            </a>
+            <a href="https://www.indiabullshomeloans.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/india bulls.png" alt=""></div>
+            </a>
+            <a href="https://www.indusind.com/in/en/personal.html">
+                <div class="partner-img"><img src="../images/Partner-Icons/induslnd bank.png" alt=""></div>
+            </a>
+            <a href="https://www.kotak.com/en/home.html">
+                <div class="partner-img"><img src="../images/Partner-Icons/kotak.png" alt=""></div>
+            </a>
+            <a href="https://rattanindia.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/Rattanindia.png" alt=""></div>
+            </a>
+            <a href="https://www.rblbank.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/Rbl Bank.png" alt=""></div>
+            </a>
+            <a href="https://www.sbicard.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/Sbi Card.png" alt=""></div>
+            </a>
+            <a href="https://www.onlinesbi.sbi/">
+                <div class="partner-img"><img src="../images/Partner-Icons/Sbi.png" alt=""></div>
+            </a>
+            <a href="https://www.sc.com/in/">
+                <div class="partner-img"><img src="../images/Partner-Icons/Standard Chartered.png" alt=""></div>
+            </a>
+            <a href="https://retailonline.tatacapital.com/">
+                <div class="partner-img"><img src="../images/Partner-Icons/Tata Capital.png" alt=""></div>
+            </a>
+            <a href="https://www.unionbankofindia.co.in/english/home.aspx">
+                <div class="partner-img"><img src="../images/Partner-Icons/Union bank.png" alt=""></div>
+            </a>
+            <a href="https://www.yesbank.in/">
+                <div class="partner-img"><img src="../images/Partner-Icons/Yes Bank.png" alt=""></div>
+            </a>
 
         </div>
     </section>
@@ -231,9 +403,9 @@
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
                     </svg></a>
-                <a target="_blank" href=""><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram"
-                        width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
+                <a target="_blank" href=""><svg xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-brand-instagram" width="44" height="44" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <rect x="4" y="4" width="16" height="16" rx="4" />
                         <circle cx="12" cy="12" r="3" />
@@ -250,9 +422,9 @@
                         <line x1="12" y1="16" x2="12" y2="11" />
                         <path d="M16 16v-3a2 2 0 0 0 -4 0" />
                     </svg></a>
-                <a target="_blank" href=""><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter"
-                        width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
+                <a target="_blank" href=""><svg xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-brand-twitter" width="44" height="44" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path
                             d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
@@ -263,8 +435,7 @@
             <div class="mapouter">
                 <div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no"
                         marginheight="0" marginwidth="0"
-                        src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=oceanone hq&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
-                        href="https://www.kokagames.com/fnf-friday-night-funkin-mods/">Friday Night Funkin Mods</a>
+                        src="https://maps.google.com/maps?width=700&amp;height=400&amp;hl=en&amp;q=Sohrab Hall&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                 </div>
                 <style>
                     .mapouter {
@@ -306,11 +477,107 @@
         }
     </style>
     <section class="footer2">
-        <small>&copy; Copyright 2024, Ocean One Pvt. Ltd</small>
+        <small>&copy; Copyright 2024, Insurance Tool</small>
+
         <small> Developed By <a href="https://www.techtasa.com/">Techtasa</a></small>
     </section>
+    <!-- <script>
+        document.querySelector(".cancel-button").addEventListener("click",()=>{
+            document.getElementById("pwaToast").style.display="none"
+        })
+        var deferredPrompt;
+        window.addEventListener('beforeinstallprompt', function(e) {
+            console.log("beforeinstallprompt fired");
+            e.preventDefault();
+            deferredPrompt = e;
+//    pwaToast.show();
+document.getElementById("pwaToast").style.display="block"
+});
+
+function installApp() {
+    deferredPrompt.prompt();
+//    pwaToast.hide();
+document.getElementById("pwaToast").style.display="none"
+    deferredPrompt.userChoice
+        .then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('PWA setup accepted');
+            } else {
+                console.log('PWA setup rejected');
+            }
+            deferredPrompt = null;
+        });
+}
+
+
+
+    </script> -->
+    <!-- <pwa-install id="pwa-install" manifest-url="manifest.json"></pwa-install>
+
+	<script type="text/javascript">
+		var pwaInstall = document.getElementById("pwa-install");
+
+		document.getElementById('events-area').value = "";
+		const logMessage = (message) => {
+			console.log(message);
+			document.getElementById('events-area').value += `>: ${message}\r\n`;
+		}
+
+		const getRelated = () => {
+			pwaInstall.getInstalledRelatedApps().then(
+				(result) => {
+					logMessage(result.toString() || 'None');
+				}
+			)
+		}
+
+		const forceStyle = (style) => {
+			switch (style) {
+				case 'apple-mobile':
+					pwaInstall.isAppleDesktopPlatform = false;
+					pwaInstall.isAppleMobilePlatform = true;
+					break;
+				case 'apple-desktop':
+					pwaInstall.isAppleMobilePlatform = false;
+					pwaInstall.isAppleDesktopPlatform = true;
+					break;
+				case 'chrome':
+					pwaInstall.isAppleMobilePlatform = false;
+					pwaInstall.isAppleDesktopPlatform = false;
+					break;
+			}
+			pwaInstall.hideDialog();
+			pwaInstall.showDialog();
+		}
+
+		const disableInstallDescription = (cb) => {
+			cb.checked ? pwaInstall.setAttribute('disable-install-description', true) :
+				pwaInstall.removeAttribute('disable-install-description');
+		}
+		const disableScreenshots = (cb) => {
+			cb.checked ? pwaInstall.setAttribute('disable-screenshots', true) :
+				pwaInstall.removeAttribute('disable-screenshots');
+		}
+		const disableClose = (cb) => {
+			cb.checked ? pwaInstall.setAttribute('disable-close', true) :
+				pwaInstall.removeAttribute('disable-close');
+		}
+		const setAttr = (attr, value) => {
+			value ? pwaInstall.setAttribute(attr, value) :
+				pwaInstall.removeAttribute(attr);
+			pwaInstall._init();
+		}
+
+		pwaInstall.addEventListener('pwa-install-success-event', (event) => { logMessage(event.detail.message) });
+		pwaInstall.addEventListener('pwa-install-fail-event', (event) => { logMessage(event.detail.message) });
+		pwaInstall.addEventListener('pwa-user-choice-result-event', (event) => { logMessage(event.detail.message) });
+		pwaInstall.addEventListener('pwa-install-available-event', (event) => { logMessage(event.detail.message) });
+		pwaInstall.addEventListener('pwa-install-how-to-event', (event) => { logMessage(event.detail.message) });
+		pwaInstall.addEventListener('pwa-install-gallery-event', (event) => { logMessage(event.detail.message) });
+	</script> -->
 </body>
 <script src="../js/jquery.js"></script>
 <script src="../js/script.js"></script>
+
 
 </html>

@@ -19,6 +19,7 @@ const blogPageRoutes = require('./routes/blogPageRoutes');
 
 const { connect} = require('./config/db');
 const bodyParser = require('body-parser');
+const { log } = require('console');
 
 require('dotenv').config();
 
@@ -51,7 +52,6 @@ const store = new MongoDBStore({
     store: store
   }));
   
-
   app.use('/auth', authRoutes);
   app.use('/loan', leadRoutes);
   app.use('/dashboard', dashboardRoutes);
@@ -72,7 +72,32 @@ const store = new MongoDBStore({
   app.get('/services', (req, res) => {
     const loggedin=req.session.user;
     res.render("services",{loggedin})
-
+    // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
+  })
+  app.get('/services/creditcard', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("creditcard",{loggedin})
+    // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
+  })
+  app.get('/services/personal', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("personal",{loggedin})
+    // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
+  })
+  app.get('/services/business', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("business",{loggedin})
+    // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
+  })
+  app.get('/services/micro', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("micro",{loggedin})
+    // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
+  })
+  app.get('/services/home', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("homeloan",{loggedin})
+    // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
   app.get('/services/termlifeinsurance', (req, res) => {
     const loggedin=req.session.user;
@@ -94,14 +119,10 @@ const store = new MongoDBStore({
     res.render("directmutualfund",{loggedin})
 
   })
-  app.get('/services/home', (req, res) => {
-    const loggedin=req.session.user;
-    res.render("homeloan",{loggedin})
-
-  })
   app.get('/contact', (req, res) => {
     const loggedin=req.session.user;
     res.render("contact",{loggedin})
+    // res.sendFile(path.join(__dirname, 'public','html', 'contact.html'));
   })
 
   
