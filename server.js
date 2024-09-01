@@ -111,6 +111,26 @@ app.use((req, res, next) => {
     res.render("homeloan",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
+  app.get('/services/termlifeinsurance', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("termlifeinsurance",{loggedin})
+
+  })
+  app.get('/services/healthinsurance', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("healthinsurance",{loggedin})
+
+  })
+  app.get('/services/guaranteedreturnplan', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("guaranteedreturnplan",{loggedin})
+
+  })
+  app.get('/services/directmutualfund', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("directmutualfund",{loggedin})
+
+  })
   app.get('/contact', (req, res) => {
     const loggedin=req.session.user;
     res.render("contact",{loggedin})
