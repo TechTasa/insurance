@@ -19,6 +19,7 @@ const blogPageRoutes = require('./routes/blogPageRoutes');
 
 const { connect} = require('./config/db');
 const bodyParser = require('body-parser');
+const flash = require('connect-flash');
 const { log } = require('console');
 
 require('dotenv').config();
@@ -51,7 +52,18 @@ const store = new MongoDBStore({
     saveUninitialized: false,
     store: store
   }));
-  
+
+  // Set up flash middleware
+app.use(flash());
+
+// Make flash messages available to all views
+app.use((req, res, next) => {
+  res.locals.messages = req.flash();
+  next();
+});
+
+
+
   app.use('/auth', authRoutes);
   app.use('/loan', leadRoutes);
   app.use('/dashboard', dashboardRoutes);
@@ -98,26 +110,6 @@ const store = new MongoDBStore({
     const loggedin=req.session.user;
     res.render("homeloan",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
-  })
-  app.get('/services/termlifeinsurance', (req, res) => {
-    const loggedin=req.session.user;
-    res.render("termlifeinsurance",{loggedin})
-
-  })
-  app.get('/services/healthinsurance', (req, res) => {
-    const loggedin=req.session.user;
-    res.render("healthinsurance",{loggedin})
-
-  })
-  app.get('/services/guaranteedreturnplan', (req, res) => {
-    const loggedin=req.session.user;
-    res.render("guaranteedreturnplan",{loggedin})
-
-  })
-  app.get('/services/directmutualfund', (req, res) => {
-    const loggedin=req.session.user;
-    res.render("directmutualfund",{loggedin})
-
   })
   app.get('/contact', (req, res) => {
     const loggedin=req.session.user;

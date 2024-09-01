@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Insurance</title>
+     <title>Finance Tool</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -27,11 +27,15 @@
             <li class=" link "><a href="/blog">Blog</a></li>
             <li class=" link"><a href="/contact">Contact</a></li>
         </ul>
-        <% if (loggedin) { %>
-            <button class="cta" onClick='location="/dashboard"'>Dashboard</button>
-        <% } else { %>
-            <button class="cta" onClick='location="/auth/login"'>Sign In</button>
-        <% } %>
+        <div class="cta-container">
+            <% if (loggedin) { %>
+                <button class="cta" onClick='location.href="/dashboard"'>Dashboard</button>
+                <button class="cta logout" onClick='location.href="/auth/logout"'>Logout</button>
+            <% } else { %>
+                <button class="cta" onClick='location.href="/auth/login"'>Login</button>
+                <button class="cta join" onClick='location.href="/auth/signup"'>Sign Up</button>
+            <% } %>
+        </div>
     </nav>
     <section class="career">
         <h1 class="career-title">Open Positions</h1>
@@ -146,7 +150,7 @@
         }
     </style>
         <section class="footer2">
-            <small>&copy; Copyright 2024, Insurance Tool</small>
+            <small>&copy; Copyright 2024, Ocean One Pvt. Ltd</small>
             <small> Developed By <a href="https://www.techtasa.com/">Techtasa</a></small>
         </section>
 </body>

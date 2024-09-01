@@ -137,16 +137,20 @@ hr {
 
 .navbar {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  width: auto;
+  width: 100%;
   padding: 0.8rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .links {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 .link {
@@ -171,15 +175,43 @@ hr {
   border-bottom: 2px solid #043a7a;
 }
 
-.cta {
-  padding: 0.6rem 1.5rem;
-  background-color: white;
-  color: #043a7a;
-  border: 1px solid #043a7a;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
+.cta-container {
+  display: flex;
+  gap: 10px;
 }
+
+.cta {
+  padding: 8px 16px;
+  background-color: #0066CC;
+  color: white;
+  border: none;
+  border-radius: 980px;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta:hover {
+  background-color: #0077ED;
+}
+
+.logout {
+  background-color: #ff3b30;
+}
+
+.logout:hover {
+  background-color: #ff453a;
+}
+
+.join{
+  background-color: rgb(111, 179, 91);
+  color: #ffffff;
+  border: none;
+}
+.join:hover {
+  background-color: rgb(139, 206, 119);
+} 
 
 .focus {
   display: flex;
@@ -425,36 +457,39 @@ body {
   overflow: hidden;
 }
 
-#creditcard {
-  background-color: #ffeaa7;
-}
-#lifeinsurance{
+#creditcard,#lifeinsurance {
   background-color: #ffeaa7;
 }
 
-#healthinsurance {
-  background-color: #d5f5e3;
-}
-#personalloan {
+#personalloan,#healthinsurance {
   background-color: #d5f5e3;
 }
 
-#microloan {
-  background-color: #e8daef;
-}
-#returnplan {
+#microloan,#returnplan {
   background-color: #e8daef;
 }
 
-#businessloan {
-  background-color: #aed6f1;
-}
-#mutualfunds {
+#businessloan ,#mutualfunds{
   background-color: #aed6f1;
 }
 
-#homeloan {
+#homeloan ,#automobile{
   background-color: #fadbd8;
+}
+#automobileloan ,#property{
+  background-color: #d3e9c0;
+}
+#educationloan,#product {
+  background-color: #c0cde9;
+}
+#propertyloan {
+  background-color: #d9c0e9;
+}
+#productloan {
+  background-color: #e9e3c0;
+}
+#serviceloan {
+  background-color: #e9c0ca;
 }
 
 .wrapper-card::before {
@@ -1278,10 +1313,7 @@ body {
    z-index: 100;
   }
 
-  .cta {
-    padding: 1rem 0.9rem;
-    
-  }
+ 
 
 .navbar{
   gap: 12px;

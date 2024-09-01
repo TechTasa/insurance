@@ -10,9 +10,10 @@ exports.applyLoan = async (req, res) => {
     companyName,
     timeToReach,
     reachBy,
+    userId,
   } = req.body;
   const leadType = req.params.type;
-
+  // const userId = req.user._id; // Get the user ID from the authenticated user
 
 
   // const pancard = req.files["pancard"][0].path; 
@@ -50,101 +51,73 @@ exports.applyLoan = async (req, res) => {
       timeToReach,
       reachBy,
       leadType,
+      userId, // Associate the lead with the user
       documents: fileFields,
     });
-    res.status(201).send(` /* <html>
-    <style>
-    
-    @supports (animation: grow .5s cubic-bezier(.25, .25, .25, 1) forwards) {
-    .tick {
-       stroke-opacity: 0;
-       stroke-dasharray: 29px;
-       stroke-dashoffset: 29px;
-       animation: draw .5s cubic-bezier(.25, .25, .25, 1) forwards;
-       animation-delay: .6s
-    }
-    
-    .circle {
-       fill-opacity: 0;
-       stroke: #219a00;
-       stroke-width: 16px;
-       transform-origin: center;
-       transform: scale(0);
-       animation: grow 1s cubic-bezier(.25, .25, .25, 1.25) forwards;   
-    }   
-    }
-    
-    @keyframes grow {
-    60% {
-       transform: scale(.8);
-       stroke-width: 4px;
-       fill-opacity: 0;
-    }
-    100% {
-       transform: scale(.9);
-       stroke-width: 8px;
-       fill-opacity: 1;
-       fill: #219a00;
-    }
-    }
-    
-    @keyframes draw {
-    0%, 100% { stroke-opacity: 1; }
-    100% { stroke-dashoffset: 0; }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    // Styles
-    :root {
-    --theme-color: var(--color-purple);
-    }
-    *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    }
-    body{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    overflow:hidden;
-    height: 100vh;
-    width:100vw;
-    }
-    .svg-container{
-    box-sizing:border-box;
-    
-    height: 100vh;
-    width:100vw;
-    margin:0;
-    padding:0;
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    }
+    res.status(201).send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+        }
+        /* From Uiverse.io by satyamchaudharydev */ 
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+.loader {
+  display: block;
+  --height-of-loader: 4px;
+  --loader-color: #0071e2;
+  width: 130px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+  ;
+}
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
     </style>
-      <body>
-      <div class="svg-container">    
-      <svg class="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
-          <circle class="circle" fill="#5bb543" cx="24" cy="24" r="22"/>
-          <path class="tick" fill="none" stroke="#FFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M14 27l5.917 4.917L34 17"/>
-      </svg>
-      <p>Thanks Our Agent Will Contact You Shortly<p>
-    </div>
-        <script>
+</head>
+<body>
+      <div class="loader"></div>
+       <script>
           setTimeout(function(){
             window.location.href = '/';
-          }, 2500);
+          }, 2100);
         </script>
-      </body>
-    </html> */`);
+</body>
+</html>`);
   } catch (err) {
     res.status(400).json({
       status: "error",

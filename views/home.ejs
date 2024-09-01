@@ -8,7 +8,7 @@
     <!-- <meta name="apple-touch-fullscreen" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
-    <title>Insurance</title>
+    <title>Finance Tool</title>
     <!-- <script type="module" src="/pwa-install.bundle.js"></script> -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- <link rel="manifest" href="/manifest.json"> -->
@@ -36,7 +36,7 @@
     <div class="calculater"><i class="fa-solid fa-calculator"></i></div>
     <nav class="navbar">
         <div id="menu"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="44"
-                height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1b1dc7" fill="none" stroke-linecap="round"
+                height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#303033" fill="none" stroke-linecap="round"
                 stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <line x1="4" y1="6" x2="20" y2="6" />
@@ -54,11 +54,15 @@
             <li class=" link"><a href="/contact">Contact</a></li>
         </ul>
 
-        <% if (loggedin) { %>
-            <button class="cta" onClick='location="/dashboard"'>Dashboard</button>
+        <div class="cta-container">
+            <% if (loggedin) { %>
+                <button class="cta" onClick='location.href="/dashboard"'>Dashboard</button>
+                <button class="cta logout" onClick='location.href="/auth/logout"'>Logout</button>
             <% } else { %>
-                <button class="cta" onClick='location="/auth/login"'>Sign In</button>
-                <% } %>
+                <button class="cta" onClick='location.href="/auth/login"'>Login</button>
+                <button class="cta join" onClick='location.href="/auth/signup"'>Sign Up</button>
+            <% } %>
+        </div>
 
 
     </nav>
@@ -172,14 +176,57 @@
                 <p class="card-discription">Choose from lowest interest ratess available for your dream home</p>
                 <p class="card-cta">Check Eligibility &rArr; </p>
             </a>
+
+            <a href="loan/apply/automobileloan" class="wrapper-card" id="automobileloan">
+                <span>
+                    <h1 class="card-title">Auto Mobile Loan</h1>
+                    <img src="../images/car-loan.png" alt="">
+                </span>
+                <p class="card-discription">Choose from lowest interest ratess available for your dream car</p>
+                <p class="card-cta">Check Eligibility &rArr; </p>
+            </a>
+            <a href="loan/apply/educationloan" class="wrapper-card" id="educationloan">
+                <span>
+                    <h1 class="card-title">Education Loan</h1>
+                    <img src="../images/tuition.png" alt="">
+                </span>
+                <p class="card-discription">Choose from lowest interest ratess available for your dream Education</p>
+                <p class="card-cta">Check Eligibility &rArr; </p>
+            </a>
+            <a href="loan/apply/propertyloan" class="wrapper-card" id="propertyloan">
+                <span>
+                    <h1 class="card-title">Loan Against Property</h1>
+                    <img src="../images/loanagaintp.png" alt="">
+                </span>
+                <p class="card-discription">Choose from lowest interest ratess available against dream property</p>
+                <p class="card-cta">Check Eligibility &rArr; </p>
+            </a>
+            <a href="loan/apply/productloan" class="wrapper-card" id="productloan">
+                <span>
+                    <h1 class="card-title">Product Loan</h1>
+                    <img src="../images/phoneloan.png" alt="">
+                </span>
+                <p class="card-discription">Choose from lowest interest ratess available for your dream Product</p>
+                <p class="card-cta">Check Eligibility &rArr; </p>
+            </a>
+            <a href="loan/apply/serviceloan" class="wrapper-card" id="serviceloan">
+                <span>
+                    <h1 class="card-title">Service Loan</h1>
+                    <img src="../images/serviceloan.png" alt="">
+                </span>
+                <p class="card-discription">Choose from lowest interest ratess available for your Service/p>
+                <p class="card-cta">Check Eligibility &rArr; </p>
+            </a>
         </div>
     </section> -->
+    
+    
     <section class="wrapper">
         <h1 class="wrapper-title">
             INSURANCE & INVESTMENT
         </h1>
         <div class="cards-grid">
-            <a href="loan/apply/insurance" class="wrapper-card" id="lifeinsurance">
+            <a href="loan/apply/terminsurance" class="wrapper-card" id="lifeinsurance">
                 <span>
                     <h1 class="card-title">TERM LIFE INSURANCE</h1>
                     <img src="../images/TErmlife-insurance.png" alt="">
@@ -187,7 +234,7 @@
                 <p class="card-discription">Get insurance for your loved ones & secure their future</p>
                 <p class="card-cta">Starting from ₹ 490/month*</p>
             </a>
-            <a href="loan/apply/insurance" class="wrapper-card" id="healthinsurance">
+            <a href="loan/apply/healthinsurance" class="wrapper-card" id="healthinsurance">
                 <span>
                     <h1 class="card-title">HEALTH INSURANCE</h1>
                     <img src="../images/healthcare-insurance.png" alt="">
@@ -196,7 +243,7 @@
                 <p class="card-discription">Protect Yourself & your family against health expenses</p>
                 <p class="card-cta">Starting from ₹ 200/month*</p>
             </a>
-            <a href="loan/apply/insurance" class="wrapper-card" id="returnplan">
+            <a href="loan/apply/returnplan" class="wrapper-card" id="returnplan">
                 <span>
                     <h1 class="card-title">GUARANTEED RETURN PLAN</h1>
                     <img src="../images/return-on-investment.png" alt="">
@@ -204,10 +251,34 @@
                 <p class="card-discription">Get guaranteed returns along with life cover</p>
                 <p class="card-cta">Invest Now &rArr;</p>
             </a>
-            <a href="loan/apply/insurance" class="wrapper-card" id="mutualfunds">
+            <a href="loan/apply/mutualfund" class="wrapper-card" id="mutualfunds">
                 <span>
                     <h1 class="card-title">DIRECT MUTUAL FUNDS</h1>
                     <img src="../images/mutual funds.png" alt="">
+                </span>
+                <p class="card-discription">Get higher returns on your Mutual Fund investments</p>
+                <p class="card-cta">Check Your Investment &rArr;</p>
+            </a>
+            <a href="loan/apply/automobileinsurance" class="wrapper-card" id="automobile">
+                <span>
+                    <h1 class="card-title">Automobile Insurance</h1>
+                    <img src="../images/car-loan.png" alt="">
+                </span>
+                <p class="card-discription">Get higher returns on your Mutual Fund investments</p>
+                <p class="card-cta">Check Your Investment &rArr;</p>
+            </a>
+            <a href="loan/apply/productinsurance" class="wrapper-card" id="product">
+                <span>
+                    <h1 class="card-title">Product Insurance</h1>
+                    <img src="../images/phoneloan.png" alt="">
+                </span>
+                <p class="card-discription">Get higher returns on your Mutual Fund investments</p>
+                <p class="card-cta">Check Your Investment &rArr;</p>
+            </a>
+            <a href="loan/apply/propertyinsurance" class="wrapper-card" id="property">
+                <span>
+                    <h1 class="card-title">Property Insurance</h1>
+                    <img src="../images/loanagaintp.png" alt="">
                 </span>
                 <p class="card-discription">Get higher returns on your Mutual Fund investments</p>
                 <p class="card-cta">Check Your Investment &rArr;</p>
@@ -237,7 +308,7 @@
     </section>
     <section class="info">
         <div class="info-left">
-            <h1>Compare, Choose and Apply for personal credit products on Insurance Tool</h1>
+            <h1>Compare, Choose and Apply for personal credit products on Finance Tool</h1>
         </div>
         <div class="info-right">
             <div class="info-right-card">
@@ -477,7 +548,7 @@
         }
     </style>
     <section class="footer2">
-        <small>&copy; Copyright 2024, Insurance Tool</small>
+        <small>&copy; Copyright 2024, Finance Tool</small>
 
         <small> Developed By <a href="https://www.techtasa.com/">Techtasa</a></small>
     </section>
