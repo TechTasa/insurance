@@ -131,6 +131,21 @@ app.use((req, res, next) => {
     res.render("directmutualfund",{loggedin})
 
   })
+  app.get('/services/AutomobileInsurance', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("AutomobileInsurance",{loggedin})
+
+  })
+  app.get('/services/productinsurance', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("productinsurance",{loggedin})
+
+  })
+  app.get('/services/PropertyInsurance', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("PropertyInsurance",{loggedin})
+
+  })
   app.get('/contact', (req, res) => {
     const loggedin=req.session.user;
     res.render("contact",{loggedin})
